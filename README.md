@@ -1,19 +1,25 @@
-# Greenoffice---edge-esp32
-Luigi Borghi RM:563096
-Levi de Jesus RM:563279
-Matheus Brasil RM:561456
+# GreenOffice - Edge ESP32
 
-  Descrição do Problema
-Ambientes corporativos têm consumo elevado de energia e pouca automação. O objetivo é criar um sistema inteligente que otimize o uso de luzes e monitore conforto ambiental.
-  Descrição da Solução
-O GreenOffice utiliza ESP32 e sensores no Wokwi para monitorar:
-temperatura
-umidade
-luminosidade
-presença
-E controlar automaticamente a iluminação.
+## Equipe
+- **Luigi Borghi** - RM: 563096
+- **Levi de Jesus** - RM: 563279
+- **Matheus Brasil** - RM: 561456
 
-main.ino - codigo completo ESP32
+## 🚨 Descrição do Problema
+Ambientes corporativos têm consumo elevado de energia e pouca automação. O objetivo é criar um sistema inteligente que otimize o uso de luzes e monitore o conforto ambiental.
+
+## 💡 Descrição da Solução
+O **GreenOffice** utiliza um microcontrolador ESP32 e sensores simulados no Wokwi para monitorar:
+- Temperatura
+- Umidade
+- Luminosidade
+- Presença
+
+Com base nesses dados, o sistema controla automaticamente a iluminação do ambiente, garantindo eficiência energética.
+
+## 💻 Código ESP32 (`main.ino`)
+
+```cpp
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include "DHTesp.h"
@@ -37,6 +43,7 @@ void setup() {
   
   WiFi.begin(ssid, password);
   Serial.print("Conectando ao WiFi");
+  
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -59,25 +66,4 @@ void loop() {
   if (presenca == 1 && luz < 2000) {
     digitalWrite(LED_PIN, HIGH);
   } else {
-    digitalWrite(LED_PIN, LOW);
-  }
-
-  // Envio via HTTP
-  if (WiFi.status() == WL_CONNECTED) {
-    HTTPClient http;
-    http.begin("https://jsonplaceholder.typicode.com/posts");
-    http.addHeader("Content-Type", "application/json");
-
-    String json = "{\"temp\":" + String(data.temperature) +
-                  ",\"umidade\":" + String(data.humidity) +
-                  ",\"luz\":" + String(luz) +
-                  ",\"presenca\":" + String(presenca) + "}";
-
-    int response = http.POST(json);
-    Serial.println("HTTP Response: " + String(response));
-    http.end();
-  }
-
-  delay(2000);
-}
-
+    digitalWrite(LED_PIN, LOW
