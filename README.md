@@ -8,7 +8,7 @@
 ## 🚨 Descrição do Problema
 Ambientes corporativos têm consumo elevado de energia e pouca automação. O objetivo é criar um sistema inteligente que otimize o uso de luzes e monitore o conforto ambiental.
 
-## 💡 Descrição da Solução
+## Descrição da Solução
 O **GreenOffice** utiliza um microcontrolador ESP32 e sensores simulados no Wokwi para monitorar:
 - Temperatura
 - Umidade
@@ -17,7 +17,7 @@ O **GreenOffice** utiliza um microcontrolador ESP32 e sensores simulados no Wokw
 
 Com base nesses dados, o sistema controla automaticamente a iluminação do ambiente, garantindo eficiência energética.
 
-## 💻 Código ESP32 (`main.ino`)
+## Código ESP32 (`main.ino`)
 
 ```cpp
 #include <WiFi.h>
